@@ -1,0 +1,47 @@
+ Text-to-Text AI Module for Descriptions (RunPod)
+
+🔍 Objective
+
+We created a new RunPod-compatible module that allows generating SEO-optimized descriptions using a pure text prompt (no image required). 
+
+⚙️ Implementation
+
+A new folder textgen-pod add to the repository.
+
+It uses the mistral model via Ollama (a lightweight local LLM).
+
+Replaces the image + prompt logic from llava with text-only input.
+
+Supports both a local Flask-based version and a serverless RunPod version.
+
+🧪 Testing (with curl)
+
+Local version:
+
+curl -X POST http://localhost:5200/describe \
+  -F "prompt=Décrivez cette œuvre en style poétique..."
+
+Serverless RunPod version:
+
+curl -X POST https://api.runpod.ai/v2/YOUR-ENDPOINT-ID/run \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"input": {"prompt": "Décrivez cette œuvre poétique..."}}'
+
+✅ Results
+
+Fast and coherent text generation
+
+Uses only textual prompts (no images required)
+
+Output is suitable for SEO descriptions, storytelling, and art product content
+
+📌 Next Steps
+
+Improve prompt engineering using templates based on style, artist, color, etc.
+
+Extend plugin logic to route requests:
+
+Text prompts → textgen-pod
+
+Set up a mockup-generator pod using Stable Diffusion for t-shirts/paintings
